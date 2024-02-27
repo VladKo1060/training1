@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <title>Дневник начинающего верстальщика</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <p class="page-title">Блог</p>
-      <nav class="blog-navigation">
-        <a href="index.html">На главную</a>
-      </nav>
-    </header>
-    <main>
+{% extends 'day-base.html' %}
+
+{% block navigation %}
+        <a href={{url_for("index")}}>На главную</a>
+      {% endblock %}
+
+{% block content %}
       <article>
         <h1>День второй. Хочу быть верстальщиком</h1>
         <p>Сегодня весь вечер просидел в интернете. Читал про преимущества работы верстальщиком. Часто отвлекался на видео с котиками, конечно, но кое-что я запомнил:</p>
@@ -28,9 +20,4 @@
       <aside class="partnership">
         Тут могла быть ваша реклама
       </aside>
-    </main>
-    <footer>
-      Подвал сайта
-    </footer>
-  </body>
-</html>
+   {% endblock %}

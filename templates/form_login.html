@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href={{ url_for('static', filename='form-style.css') }}>
+{% endblock %}
+
+{% block content %}
+    <h2>Авторизация</h2>
+    <p>Войди на сайт!</p>
+    <form class="feedback-form" action="/login" method="post">
+        <p>
+            <label for="login">Введите логин</label>
+            <input type="text" name="login" id="login">
+        </p>
+        <p>
+            <label for="pass">Введите пароль</label>
+            <input type="password" name="pass" id="pass">
+        </p>
+        <input class="btn" type="submit" value="Отправить">
+    </form>
+{% endblock %}

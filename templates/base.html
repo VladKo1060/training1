@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Сайт начинающего верстальщика</title>
+    <link rel="stylesheet" href={{url_for('static', filename="style.css")}}>
+  </head>
+  <body>
+    <header>
+      {% block head %}
+        <p class="page-title">Блог</p>
+         <div class="avatar-container">
+          <img class="avatar" src={{url_for('static', filename="img/raccoon.svg")}} width="80" height="80" alt="Аватарка">
+        </div>
+
+        <nav class="blog-navigation">
+          <a href={{url_for("index")}}>На главную</a>
+        </nav>
+      {% endblock %}
+    </header>
+    <main>
+      {% block content %}
+      ошибка 404
+      {% endblock %}
+    </main>
+    <footer>
+      Подвал сайта
+    </footer>
+  </body>
+</html>
