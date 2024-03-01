@@ -1,6 +1,11 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, flash, redirect, session
 
 app = Flask(__name__)
+app.secret_key = 'SECRET'
+
+users = [
+    {'username': 'kolodezh_v@1060.ru', 'password': '12345678'}
+]
 
 
 @app.route('/')   # endpoint
@@ -54,7 +59,7 @@ def photo(num):
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
-    if request.mathod == 'POST':
+    if request.method == 'POST':
         print(request.form)
     return render_template(f'form.html')
 
@@ -63,6 +68,20 @@ def form():
 def login():
     if request.method == 'POST':
         print(request.form)
+
+        for user in users:
+            print(user)
+            if request.form['login'] == user['username']:
+                if request.form['pass'] == user['password']:
+                    print(f'login {request.form}')
+                    session['username'] = user['username']
+                    return redirect(url_for('start'))
+        flash('ты не вошёл', 'error')
+        print('end')
+    else:
+        if session.get('username'):
+            pass
+
     return render_template(f'form_login.html')
 
 
